@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from django.core.mail import send_mail
+from django.shortcuts import render
+from django.http import JsonResponse
 from .contact_form import ContactForm
 
 # def index(request):
@@ -15,17 +15,19 @@ def portfolio_details(request):
 
 
 def index(request):
+    form = ContactForm()  # Initialisation du formulaire en dehors de la clause if
+
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()  # Enregistrez les données dans la base de données
-            form.instance.message_envoye = True  # Marquez le message comme envoyé
-            form.save()
-            return redirect('/')
-    else:
-        form = ContactForm()
-
+            response_data = {"message": "Le formulaire a été envoyé avec succès."}
+        else:
+            response_data = {"message": "Une erreur s'est produite lors de l'envoi du formulaire."}
+        return JsonResponse(response_data)
     return render(request, 'index.html', {'form': form})
+
+
 
 # Cette etape permet d'envoyer un email à l'administrateur du site 
 

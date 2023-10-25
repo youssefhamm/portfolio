@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-3*=o3*c284t8!(5-3%ib(c!#d)ts_)s$pnzrsqq!#--%zo7tle
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['yhammou2000.pythonanywhere.com', 'www.yhammou2000.pythonanywhere.com']
 
 
 # Application definition
@@ -77,10 +77,15 @@ WSGI_APPLICATION = 'monportfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'portfolio_db',
+        'USER': 'youssef',
+        'PASSWORD': 'Jozef123*',
+        'HOST': 'localhost',  # ou l'adresse de votre serveur PostgreSQL
+        'PORT': '5432',      # ou le port PostgreSQL
     }
 }
+
 
 
 # Password validation
@@ -116,9 +121,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 
 STATIC_URL = '/static/'
 # Default primary key field type
@@ -126,4 +131,6 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+STATICFILES_DIRS = [BASE_DIR/'static',]
+STATIC_ROOT = BASE_DIR/'staticfiles'
 

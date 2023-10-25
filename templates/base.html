@@ -93,18 +93,54 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
   <!-- Vendor JS Files -->
-  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
-  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
-  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/typed.js/typed.umd.js' %}"></script>
-  <script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
-  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script defer src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script defer src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script defer src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script defer src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script defer src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script defer src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script defer src="{% static 'assets/vendor/typed.js/typed.umd.js' %}"></script>
+  <script defer src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
+  <script defer src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("my-form");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+          method: form.method,
+          body: formData
+        })
+          .then(response => response.json())
+          .then(data => {
+            const statusMessage = document.getElementById("status-message");
+            statusMessage.textContent = data.message;
+
+            // Réinitialiser les champs du formulaire
+            form.reset();
+
+            // Ajouter des classes Bootstrap en fonction de la réponse
+            if (data.message === "Le formulaire a été envoyé avec succès.") {
+              statusMessage.classList.add("alert", "alert-success");
+            } else {
+              statusMessage.classList.add("alert", "alert-danger");
+            }
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      });
+    });
+
+
+  </script>
 
   <!-- Template Main JS File -->
-  <script src="{% static 'assets/js/main.js' %}"></script>
+  <script defer src="{% static 'assets/js/main.js' %}"></script>
 </body>
 
 </html>

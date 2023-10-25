@@ -25,7 +25,7 @@
 
       <div class="row">
         <div class="col-lg-4" data-aos="fade-right">
-          <img src="{% static 'assets/img/maphoto.jpg' %}" style="height: 400px;" class="img-fluid" alt="">
+          <img src="{% static 'assets/img/maphoto.jpg' %}" style="height: 300px;" class="img-fluid" alt="">
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
           <h3>DATA ANALYST &amp; SCIENTIST &amp; Machine Learning.</h3>
@@ -53,12 +53,7 @@
               </ul>
             </div>
           </div>
-          <p>
-            Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut.
-            Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-            Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque.
-            Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
-          </p>
+
         </div>
       </div>
 
@@ -72,9 +67,9 @@
 
       <div class="section-title">
         <h2>Skills</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
+        <p>Pour démontrer ma capacité à m'adapter à divers environnements de développement,
+          je possède une expertise étendue dans l'utilisation d'un large éventail d'outils techniques,
+          notamment :</p>
       </div>
 
       <div class="row skills-content">
@@ -175,7 +170,8 @@
           <div class="resume-item pb-0">
             <h4>Youssef HAMMOUJAN</h4>
             <p><em>A forward-thinking Master's student pursuing an 'Ingénierie des Systèmes Complexes' degree at École
-                d’Ingénieur du Littoral Côte d’Opale, with a strong foundation in applied mathematics, computer science,
+                d’Ingénieur du Littoral Côte d’Opale(EILCO), with a strong foundation in applied mathematics, computer
+                science,
                 and data science. Passionate about leveraging these skills to tackle complex problems and drive
                 innovation in the field.</em></p>
             <ul>
@@ -190,15 +186,20 @@
             <h4>Bachelor's degree in Software Engineering</h4>
             <h5>2020 - 2021</h5>
             <p><em>Faculty of Science and Technology, Errachidia, Morroco</em></p>
-            <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui
-              ut dignissimos deleniti nerada porti sand markend</p>
+            <p>Expertise in software analysis, design, development, and modeling, combined with a mastery of modern
+              software engineering methods to design customized solutions that meet the needs of organizations.</p>
           </div>
           <div class="resume-item">
             <h4>Master's degree in Complex Systems Engineering</h4>
             <h5>2010 - 2014</h5>
-            <p><em>Faculty of Science and Technology, Errachidia, Morroco</em></p>
-            <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius
-              unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila
+            <p><em>School of Engineering of the Littoral Côte d'Opale, Calais, France</em></p>
+            <p>Through the MISC Master's program, I have gained advanced expertise in modeling, simulation, computer
+              science, and complex systems analysis. This comprehensive training has equipped me with the skills
+              required for interdisciplinary, high-level technical and scientific missions. My knowledge spans various
+              domains, including modeling, machine learning, mathematical engineering, computer science, numerical
+              computing, signal processing, data analysis, big data, and artificial intelligence. These competencies
+              prepare me for successful careers in both industrial and academic environments within the complex systems
+              engineering field.
             </p>
           </div>
         </div>
@@ -513,9 +514,6 @@
 
       <div class="section-title">
         <h2>Contact</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
       </div>
 
       <div class="row" data-aos="fade-in">
@@ -549,7 +547,7 @@
         </div>
 
         <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-          <form method="post" class="django-email-form">
+          <form method="post" id="my-form" class="django-email-form">
             {% csrf_token %}
 
             <div class="row">
@@ -578,6 +576,8 @@
 
             <div class="text-center"><button type="submit">Send Message</button></div>
 
+            <div id="status-message"></div>
+
             <!-- {% if form.instance.message_envoye %}
             <div class="validate">
               message envoyé avec succés
@@ -596,6 +596,25 @@
   </section><!-- End Contact Section -->
 
 </main><!-- End #main -->
+
+<!-- <script>
+  var form = document.getElementById('my-form');
+  form.onsubmit = function submitMessage(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // var data = null
+
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => response.json())
+      .then(todo => {
+        const message = `l'id de l'utilisateur est : ${todo.userId}, son titre est : ${todo.title}, est terminé : ${todo.completed}`
+        alert(message);
+      }
+      )
+  }
+
+</script> -->
 
 
 {% endblock %}
